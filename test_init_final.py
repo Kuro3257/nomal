@@ -1701,7 +1701,7 @@ while True:
 								hours, remainder = divmod(total_seconds,60*60)
 								minutes, seconds = divmod(remainder,60)
 
-								result_lefttime += '다음 ' + ouput_bossData[i][0] + '탐까지 %02d:%02d:%02d 남았습니다. ' % (hours,minutes,seconds) + '[' +  ouput_bossData[i][2] + ']\n'
+								result_lefttime += '다음 ' + ouput_bossData[i][0] + '탐까지 %02d:%02d:%02d 남았습니다. ' % (hours,minutes,seconds) + '[' +  ouput_bossData[i][2][:5] + ']\n'
 				else :
 					for j in range(len(sorted_datelist)):
 						for i in range(len(ouput_bossData)):						
@@ -1712,7 +1712,7 @@ while True:
 								hours, remainder = divmod(total_seconds,60*60)
 								minutes, seconds = divmod(remainder,60)
 
-								result_lefttime += '다음 ' + ouput_bossData[i][0] + '탐까지 %02d:%02d:%02d 남았습니다. ' % (hours,minutes,seconds) + '[' +  ouput_bossData[i][2] + ']\n'
+								result_lefttime += '다음 ' + ouput_bossData[i][0] + '탐까지 %02d:%02d:%02d 남았습니다. ' % (hours,minutes,seconds) + '[' +  ouput_bossData[i][2][:5] + ']\n'
 				embed = discord.Embed(
 					description= result_lefttime,
 					color=0xff0000
@@ -1873,14 +1873,14 @@ while True:
 					if timestring == ouput_bossData[i][1]:
 						if ouput_bossData[i][4] == '0' :
 							if ouput_bossData[i][5] == 0 :
-								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2] + ' : ' + ouput_bossData[i][0] + ' ' + ouput_bossData[i][6] + '\n'
+								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2][:5] + ' : ' + ouput_bossData[i][0] + ' ' + ouput_bossData[i][6] + '\n'
 							else :
-								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2] + ' : ' + ouput_bossData[i][0] + ' (미 ' + str(ouput_bossData[i][5]) + '회)' + ' ' + ouput_bossData[i][6] + '\n'
+								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2][:5] + ' : ' + ouput_bossData[i][0] + ' (미 ' + str(ouput_bossData[i][5]) + '회)' + ' ' + ouput_bossData[i][6] + '\n'
 						else : 
 							if ouput_bossData[i][5] == 0 :
-								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2] + ' : ' + ouput_bossData[i][0] + ' ' + ouput_bossData[i][6] + '\n'
+								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2][:5] + ' : ' + ouput_bossData[i][0] + ' ' + ouput_bossData[i][6] + '\n'
 							else :
-								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2] + ' : ' + ouput_bossData[i][0] + ' (멍 ' + str(ouput_bossData[i][5]) + '회)' + ' ' + ouput_bossData[i][6] + '\n'
+								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2][:5] + ' : ' + ouput_bossData[i][0] + ' (멍 ' + str(ouput_bossData[i][5]) + '회)' + ' ' + ouput_bossData[i][6] + '\n'
 
 			if len(boss_information) == 1 and len(tmp_boss_information) == 1:
 				###########################
@@ -1899,11 +1899,12 @@ while True:
 						description= boss_information[0],
 						color=0x0000ff
 						)
-				embed.add_field(
+				"""embed.add_field(
 						name="----- 미예약 보스 -----",
 						value= tmp_boss_information[0],
 						inline = False
-						)				
+						)
+"""	
 				await ctx.send( embed=embed, tts=False)
 			else : 
 				###########################일반보스출력
@@ -1931,7 +1932,7 @@ while True:
 							)
 					await ctx.send( embed=embed, tts=False)
 				###########################미예약보스출력
-				if len(tmp_boss_information[0]) != 0:
+				"""if len(tmp_boss_information[0]) != 0:
 					if len(tmp_boss_information) == 1 :
 						tmp_boss_information[0] = "```fix\n" + tmp_boss_information[0][:len(tmp_boss_information[0])-1] + "\n```"
 					else:
@@ -1960,7 +1961,7 @@ while True:
 							color=0x0000ff
 							)
 					await ctx.send( embed=embed, tts=False)
-
+"""
 			await dbSave()
 			await kill_list_Save()
 		else:
@@ -2043,14 +2044,14 @@ while True:
 					if timestring == ouput_bossData[i][1]:
 						if ouput_bossData[i][4] == '0' :
 							if ouput_bossData[i][5] == 0 :
-								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2] + ' : ' + ouput_bossData[i][0] + ' ' + ouput_bossData[i][6] + '\n'
+								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2][:5] + ' : ' + ouput_bossData[i][0] + ' ' + ouput_bossData[i][6] + '\n'
 							else :
-								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2] + ' : ' + ouput_bossData[i][0] + ' (미 ' + str(ouput_bossData[i][5]) + '회)' + ' ' + ouput_bossData[i][6] + '\n'
+								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2][:5] + ' : ' + ouput_bossData[i][0] + ' (미 ' + str(ouput_bossData[i][5]) + '회)' + ' ' + ouput_bossData[i][6] + '\n'
 						else : 
 							if ouput_bossData[i][5] == 0 :
-								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2] + ' : ' + ouput_bossData[i][0] + ' ' + ouput_bossData[i][6] + '\n'
+								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2][:5] + ' : ' + ouput_bossData[i][0] + ' ' + ouput_bossData[i][6] + '\n'
 							else :
-								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2] + ' : ' + ouput_bossData[i][0] + ' (멍 ' + str(ouput_bossData[i][5]) + '회)' + ' ' + ouput_bossData[i][6] + '\n'
+								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2][:5] + ' : ' + ouput_bossData[i][0] + ' (멍 ' + str(ouput_bossData[i][5]) + '회)' + ' ' + ouput_bossData[i][6] + '\n'
 
 			###########################고정보스출력
 			if len(fixedboss_information[0]) != 0:
@@ -2103,7 +2104,7 @@ while True:
 				await ctx.send( embed=embed, tts=False)
 
 			###########################미예약보스출력
-			if len(tmp_boss_information[0]) != 0:
+			"""if len(tmp_boss_information[0]) != 0:
 				if len(tmp_boss_information) == 1 :
 					tmp_boss_information[0] = "```fix\n" + tmp_boss_information[0][:len(tmp_boss_information[0])-1] + "\n```"
 				else:
@@ -2132,7 +2133,7 @@ while True:
 						color=0x0000ff
 						)
 				await ctx.send( embed=embed, tts=False)
-
+"""
 			await dbSave()
 			await kill_list_Save()
 		else:
